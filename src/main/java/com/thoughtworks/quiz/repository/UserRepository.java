@@ -16,12 +16,13 @@ public class UserRepository {
 
     public UserRepository(){
         List<Education> educationList=new ArrayList<>();
-        Education education1=new Education(1L,2010L,"First school","Serving as a cadre of the Department of External Relations of the Student Union, in the process of student work and outgoing sponsorship and business contacts, greatly improved his ability to handle affairs and affairs.");
-        educationList.add(education1);
-        Education education2=new Education(1L,2013L,"Second school","In normal school life, Yuan has done many part-time jobs. For example: family tutors, telephone interviewers, and summer jobs in factories. I have personally experienced the different operating procedures and methods of various jobs, and have become hard-working.");
-        educationList.add(education2);
-        Education education3=new Education(1L,2017L,"Third school","Study hard and earnestly, have excellent grades, and rank among the best. Excellent both in character and learning, won the college scholarship for three consecutive years.");
-        educationList.add(education3);
+
+//        Education education1=new Education(1L,2010L,"First school","Serving as a cadre of the Department of External Relations of the Student Union, in the process of student work and outgoing sponsorship and business contacts, greatly improved his ability to handle affairs and affairs.");
+//        educationList.add(education1);
+//        Education education2=new Education(1L,2013L,"Second school","In normal school life, Yuan has done many part-time jobs. For example: family tutors, telephone interviewers, and summer jobs in factories. I have personally experienced the different operating procedures and methods of various jobs, and have become hard-working.");
+//        educationList.add(education2);
+//        Education education3=new Education(1L,2017L,"Third school","Study hard and earnestly, have excellent grades, and rank among the best. Excellent both in character and learning, won the college scholarship for three consecutive years.");
+//        educationList.add(education3);
 
 
         userList.add(new User(1L,"John",25L,"https://inews.gtimg.com/newsapp_match/0/3581582328/0","Possess rich project experience, good baiting becomes a habit and strong learning adaptability.",educationList));
@@ -30,6 +31,15 @@ public class UserRepository {
         Optional<User> userFound = userList.stream().filter(user -> user.getId() == id).findFirst();
         if(userFound.isPresent()){
             return userFound.get();
+        }else{
+            return null;
+        }
+    }
+
+    public List<Education> getEducations(Long id){
+        Optional<User> userFound = userList.stream().filter(user -> user.getId() == id).findFirst();
+        if(userFound.isPresent()){
+            return userFound.get().getEducations();
         }else{
             return null;
         }

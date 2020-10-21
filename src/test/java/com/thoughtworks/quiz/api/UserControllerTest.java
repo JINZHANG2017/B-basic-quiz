@@ -25,7 +25,17 @@ class UserControllerTest {
         mockMvc
                 .perform(get("/users/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name", is("user1")))
-                .andExpect(jsonPath("$.age", is(5)));
+                .andExpect(jsonPath("$.name", is("John")))
+                .andExpect(jsonPath("$.age", is(25)))
+                .andExpect(jsonPath("$.educations",hasSize(3)));
+    }
+
+    @Test
+    public void should_get_educations_by_userid() throws Exception {
+        mockMvc
+                .perform(get("/users/1/educations"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$",hasSize(3)))
+                .andExpect(jsonPath("$[0].year",is(2010)));
     }
 }

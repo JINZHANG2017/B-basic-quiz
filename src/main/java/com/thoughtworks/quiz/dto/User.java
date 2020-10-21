@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -22,4 +24,5 @@ public class User {
     private Long age;
     private String avatar;
     private String description;
+    private List<Education> educations;
 }

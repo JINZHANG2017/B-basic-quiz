@@ -32,4 +32,11 @@ public class UserService {
     public List<Education> getEducationsByUserId(Long id) {
         return educationRepository.getAllByUserId(id);
     }
+
+    public Long addUser(User user) {
+        List<User> userList = userRepository.getAll();
+        user.setId(Long.valueOf(userList.size()+1));
+        userRepository.addUser(user);
+        return user.getId();
+    }
 }

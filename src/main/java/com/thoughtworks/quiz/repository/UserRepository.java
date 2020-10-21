@@ -27,6 +27,9 @@ public class UserRepository {
 
         userList.add(new User(1L,"John",25L,"https://inews.gtimg.com/newsapp_match/0/3581582328/0","Possess rich project experience, good baiting becomes a habit and strong learning adaptability.",educationList));
     }
+    public List<User> getAll(){
+        return userList;
+    }
     public User getUserById(Long id){
         Optional<User> userFound = userList.stream().filter(user -> user.getId() == id).findFirst();
         if(userFound.isPresent()){
@@ -43,5 +46,9 @@ public class UserRepository {
         }else{
             return null;
         }
+    }
+
+    public void addUser(User user) {
+        userList.add(user);
     }
 }

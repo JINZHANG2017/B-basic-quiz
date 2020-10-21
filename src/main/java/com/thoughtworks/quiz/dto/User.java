@@ -25,4 +25,10 @@ public class User {
     private String avatar;
     private String description;
     private List<Education> educations;
+    public User(String name,Long age,String avatar,String description){
+        this.name=name;
+        this.age=age;
+        this.avatar=avatar;
+        this.description=description;
+    }
 }

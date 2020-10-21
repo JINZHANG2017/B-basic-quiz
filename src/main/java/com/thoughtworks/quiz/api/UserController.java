@@ -31,4 +31,9 @@ public class UserController {
     public List<Education> getUserEducations(@PathVariable Long id){
         return userService.getEducationsByUserId(id);
     }
+
+    @PostMapping("/{id}/educations")
+    public void addEducation(@PathVariable Long id,@RequestBody Education education){
+        userService.addEducation(id,education);
+    }
 }

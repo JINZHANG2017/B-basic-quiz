@@ -1,6 +1,7 @@
 package com.thoughtworks.quiz.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.thoughtworks.quiz.dto.Education;
 import com.thoughtworks.quiz.dto.User;
 import com.thoughtworks.quiz.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -59,5 +60,24 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.id",is("2")));
         List<User> userList = userRepository.getAll();
         assertEquals("一个好人",userList.get(1).getDescription());
+    }
+
+    @Test
+    public void should_add_an_education() throws Exception {
+        Education education=new Education();
+        education.setTitle("fourth school");
+        education.setDescription("act well");
+        education.setYear(2020L);
+        ObjectMapper objectMapper=new ObjectMapper();
+        String json=objectMapper.writeValueAsString(education);
+        mockMvc
+                .perform(post("/users/1/educations").contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isOk());
+        mockMvc
+                .perform(get("/users/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.educations",hasSize(4)))
+                .andExpect(jsonPath("$.educations[3].title",is("fourth school")));
     }
 }

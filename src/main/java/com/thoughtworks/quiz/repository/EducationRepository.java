@@ -25,4 +25,8 @@ public class EducationRepository {
     public List<Education> getAllByUserId(Long userId){
         return educationList.stream().filter(education -> education.getUserId()==userId).collect(Collectors.toList());
     }
+
+    public void addEducation(Education education) {
+        educationList.add(education);
+    }
 }

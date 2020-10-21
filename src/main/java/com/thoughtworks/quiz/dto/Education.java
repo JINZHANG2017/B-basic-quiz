@@ -3,9 +3,11 @@ package com.thoughtworks.quiz.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Education {
 //    userId:long	用户 ID。
 //    year:long	历年。

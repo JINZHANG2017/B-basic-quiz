@@ -39,4 +39,9 @@ public class UserService {
         userRepository.addUser(user);
         return user.getId();
     }
+
+    public void addEducation(Long id,Education education) {
+        education.setUserId(id);
+        educationRepository.addEducation(education);
+    }
 }

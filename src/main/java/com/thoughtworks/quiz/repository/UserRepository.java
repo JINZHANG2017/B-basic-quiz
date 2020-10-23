@@ -17,6 +17,7 @@ public class UserRepository {
     public UserRepository(){
         List<Education> educationList=new ArrayList<>();
 
+        // TODO GTB-4: - 不用的代码应该及时清理
 //        Education education1=new Education(1L,2010L,"First school","Serving as a cadre of the Department of External Relations of the Student Union, in the process of student work and outgoing sponsorship and business contacts, greatly improved his ability to handle affairs and affairs.");
 //        educationList.add(education1);
 //        Education education2=new Education(1L,2013L,"Second school","In normal school life, Yuan has done many part-time jobs. For example: family tutors, telephone interviewers, and summer jobs in factories. I have personally experienced the different operating procedures and methods of various jobs, and have become hard-working.");
@@ -32,6 +33,7 @@ public class UserRepository {
     }
     public User getUserById(Long id){
         Optional<User> userFound = userList.stream().filter(user -> user.getId() == id).findFirst();
+        // TODO GTB-3: - 下面代码可以替换成一行"return userFound.orElse(null)"
         if(userFound.isPresent()){
             return userFound.get();
         }else{

@@ -13,6 +13,7 @@ public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = UserNotFoundException.class)
+    // TODO GTB-4: - 存在没有使用的方法参数
     public ErrorMessage userNotFoundExceptionHandler(UserNotFoundException e){
         return new ErrorMessage(new Date().toString(),HttpStatus.NOT_FOUND.getReasonPhrase(), String.valueOf(HttpStatus.NOT_FOUND.value()),"user not found");
     }

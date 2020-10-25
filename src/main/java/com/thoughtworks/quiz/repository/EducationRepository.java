@@ -23,7 +23,7 @@ public class EducationRepository {
     }
 
     public List<Education> getAllByUserId(Long userId){
-        // TODO GTB-3: - 对象的比较应该使用equals方法
+        // TODO GTB-3: - 对象的比较应该使用equals方法（比较id）
         return educationList.stream().filter(education -> education.getUserId()==userId).collect(Collectors.toList());
     }
 

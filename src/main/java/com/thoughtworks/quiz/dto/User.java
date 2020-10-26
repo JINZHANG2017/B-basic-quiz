@@ -1,6 +1,7 @@
 package com.thoughtworks.quiz.dto;
 
 
+import com.thoughtworks.quiz.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,5 +31,14 @@ public class User {
         this.age=age;
         this.avatar=avatar;
         this.description=description;
+    }
+
+    public UserEntity toEntity() {
+        return UserEntity.builder()
+                .age(age)
+                .name(name)
+                .avatar(avatar)
+                .description(description)
+                .build();
     }
 }

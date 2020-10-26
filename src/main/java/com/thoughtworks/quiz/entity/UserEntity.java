@@ -29,6 +29,6 @@ public class UserEntity {
 //    private List<EducationEntity> educationEntities;
 
     public User toUser() {
-        return new User(id,name,age,avatar,description,new ArrayList<>());
+        return new User(id, name, age, avatar, description);
     }
 }

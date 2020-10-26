@@ -16,4 +16,5 @@ import java.util.stream.Collectors;
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity,Long> {
     List<UserEntity> findAll();
+
 }

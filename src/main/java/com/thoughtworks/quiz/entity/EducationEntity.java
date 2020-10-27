@@ -18,14 +18,14 @@ import java.util.List;
 @Table(name = "education")
 public class EducationEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long year;
     private String title;
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
     private UserEntity user;
 
     public Education toEducation() {

@@ -65,7 +65,7 @@ class UserControllerUnitTest {
         when(userService.addUser(userPost)).thenReturn(firstUser);
         String json = objectMapper.writeValueAsString(userPost);
         mockMvc.perform(post("/users").contentType(MediaType.APPLICATION_JSON).content(json))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name", is("John")))
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.age", is(18)))

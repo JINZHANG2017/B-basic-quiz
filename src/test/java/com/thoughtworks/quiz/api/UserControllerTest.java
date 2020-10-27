@@ -111,7 +111,7 @@ class UserControllerTest {
         mockMvc
                 .perform(post("/users").contentType(MediaType.APPLICATION_JSON)
                         .content(json))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id", is(1)));
         List<UserEntity> userList = userRepository.findAll();
         assertEquals("一个好人", userList.get(0).getDescription());

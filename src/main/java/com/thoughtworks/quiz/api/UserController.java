@@ -4,6 +4,7 @@ import com.thoughtworks.quiz.dto.Education;
 import com.thoughtworks.quiz.dto.User;
 import com.thoughtworks.quiz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,7 @@ public class UserController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     // TODO GTB-3: - 违反Restful实践，Post接口应返回创建成功的对象（改）
     public User addUser(@RequestBody User user){
         return userService.addUser(user);
